@@ -56,37 +56,6 @@ export default function FooterSection() {
     return (
         <footer className="bg-background overflow-hidden" aria-label="Footer">
 
-            {/* Wave top separator */}
-            <div
-                className="relative w-full overflow-hidden leading-none"
-                style={{ height: "60px" }}
-                aria-hidden="true"
-            >
-                <svg
-                    viewBox="0 0 1440 60"
-                    preserveAspectRatio="none"
-                    className="absolute inset-0 h-full w-full"
-                >
-                    <defs>
-                        <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="var(--card)" />
-                            <stop offset="50%" stopColor="var(--background)" />
-                            <stop offset="100%" stopColor="var(--card)" />
-                        </linearGradient>
-                    </defs>
-                    <path
-                        d="M0,0 C360,55 1080,5 1440,40 L1440,0 Z"
-                        fill="url(#waveGrad)"
-                        opacity="0.9"
-                    />
-                    <path
-                        d="M0,20 C480,60 960,10 1440,35 L1440,0 L0,0 Z"
-                        fill="var(--background)"
-                        opacity="0.6"
-                    />
-                </svg>
-            </div>
-
             {/* Content wrapper */}
             <div className="relative">
 
