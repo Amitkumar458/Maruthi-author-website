@@ -5,6 +5,7 @@ import { HelpCircle, Search, X, Plus, LayoutGrid, BookOpen, Heart, Users, Home, 
 import { cn } from "@/lib/utils";
 import { faqs } from "@/constents/faqs";
 import { Button } from "../ui/button";
+import { useBuyModal } from "../shared/BuyModalContext";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Category =
@@ -204,6 +205,7 @@ function FAQCard({
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function FaqsSection() {
+    const usebuymodal = useBuyModal();
     const [activeTab, setActiveTab] = useState<Category>("all");
     const [search, setSearch] = useState("");
     const [openId, setOpenId] = useState<number | null>(null);
@@ -290,7 +292,7 @@ export default function FaqsSection() {
                             key={cat}
                             onClick={() => setActiveTab(cat)}
                             className={cn(
-                                "inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-md font-semibold transition-all duration-200",
+                                "inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm lg:text-base font-semibold transition-all duration-200",
                                 activeTab === cat
                                     ? "border-primary/50 text-primary shadow-sm"
                                     : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground"
@@ -372,7 +374,7 @@ export default function FaqsSection() {
                         className="text-md h-12 px-6"
                         size={'lg'}
                         onClick={() => {
-                            window.open("https://www.amazon.in/How-Raise-Genius-Child-Unlocking/dp/939245427X", "_blank");
+                            usebuymodal.open();
                         }}
                     >
                         Get the Book

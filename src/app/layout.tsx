@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import FooterSection from "@/components/shared/Footer";
+import { BuyModalProvider } from "@/components/shared/BuyModalContext";
+import BuyModal from "@/components/shared/BuyModal";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -25,10 +27,14 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Navbar />
-        {children}
-        <FooterSection />
+        <BuyModalProvider>
+          <Navbar />
+          {children}
+          <FooterSection />
+          <BuyModal />
+        </BuyModalProvider>
       </body>
     </html>
   );
 }
+

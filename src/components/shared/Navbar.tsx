@@ -3,11 +3,11 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Sun, Moon, BookOpen, ArrowRight } from "lucide-react";
+import { Menu, X, Sun, Moon, ArrowRight } from "lucide-react";
 
 const NAV_LINKS = [
     { label: "Home", href: "/" },
-    { label: "About The book", href: "/about-the-book" },
+    { label: "About The book", href: "/how-to-raise-a-genius-child" },
     { label: "Know Your Author", href: "/about-the-author" },
     { label: "Reviews", href: "/reviews" },
     { label: "Get Your Copy", href: "/get-your-copy" },
@@ -130,7 +130,7 @@ export default function Navbar() {
                                             color: "transparent",
                                         }}
                                     >
-                                        Genius Parenting
+                                        Mybookzz
                                     </span>
                                     <span className="text-muted-foreground text-[0.9rem] font-medium truncate tracking-wide">
                                         Raise Potential. Shape Tomorrow
@@ -264,9 +264,9 @@ export default function Navbar() {
                                     color: "transparent",
                                 }}
                             >
-                                Genius Parenting
+                                Mybookzz
                             </span>
-                            <span className="text-muted-foreground text-[0.95rem]">
+                            <span className="text-muted-foreground text-[0.90rem]">
                                 Raise Potential. Shape Tomorrow.
                             </span>
                         </span>

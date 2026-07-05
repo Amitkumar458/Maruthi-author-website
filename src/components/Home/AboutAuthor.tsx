@@ -81,10 +81,8 @@ function Stat({ value, label, index, isVisible }: StatProps) {
 }
 
 const credentials = [
-  { icon: <Award size={24} strokeWidth={1.8} />, text: "Chairperson, National Teacher Awards (CISCE)" },
-  { icon: <Globe size={24} strokeWidth={1.8} />, text: "Lifetime Fellow, Eudoxia Research University (USA)" },
   { icon: <GraduationCap size={24} strokeWidth={1.8} />, text: "Principal — Hyderabad Public School, Begumpet" },
-  { icon: <Star size={24} strokeWidth={1.8} />, text: "President, ASISC All India" },
+  { icon: <Star size={24} strokeWidth={1.8} />, text: "Positive Parenting Coach" },
 ];
 
 const stats = [
@@ -206,7 +204,7 @@ export default function AboutAuthorSection() {
           </div>
 
           {/* ═══ RIGHT — Content ═══ */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
 
             {/* Eyebrow */}
             <p
@@ -246,7 +244,7 @@ export default function AboutAuthorSection() {
 
             {/* Body text */}
             <p
-              className="text-xl leading-relaxed text-center lg:text-left"
+              className="text-lg leading-relaxed text-center lg:text-left"
               style={{
                 color: "var(--muted-foreground)",
                 opacity: isVisible ? 1 : 0,
@@ -254,7 +252,21 @@ export default function AboutAuthorSection() {
                 transition: "opacity 0.55s ease 0.25s, transform 0.55s ease 0.25s",
               }}
             >
-              With over <strong style={{ color: "var(--foreground)", fontWeight: 700 }}>36 years shaping young minds</strong> across India's most prestigious institutions — including The Hyderabad Public School, Begumpet — Maruthi Ram Prasad Pelluri is not just an educator. He is a movement. As <strong style={{ color: "var(--foreground)", fontWeight: 700 }}>International Educational Ambassador</strong>, he has guided thousands of parents and teachers to unlock the hidden genius in every child.
+              <strong style={{ color: "var(--foreground)", fontWeight: 700 }}>36 Years. One Mission.</strong> For over three decades,
+              <strong> Maruthi Ram Prasad Pelluri </strong>
+              has shaped generations at The Hyderabad Public School, Begumpet and other leading institutions across India.
+              But he’s not just teaching students. He’s empowering parents and teachers to see what’s always been there:
+              <strong style={{ color: "var(--foreground)", fontWeight: 700 }}> The hidden genius in every child.</strong> <br />
+              This is education.
+              This is a movement.
+
+              For Parents
+              From classrooms to living rooms, his guidance helps families move from pressure to potential.
+
+              For Educators
+              Training teachers to teach beyond textbooks, and reach the child behind the marks.
+
+              Join the movement. Get the copy of the book and discover your child’s Genius.
             </p>
 
             {/* Quote block */}

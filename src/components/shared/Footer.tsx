@@ -8,7 +8,6 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import {
     FaFacebook,
     FaInstagram,
-    FaTiktok,
     FaYoutube,
 } from "react-icons/fa6";
 import { cn } from "@/lib/utils";

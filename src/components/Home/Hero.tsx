@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { ShoppingCart, Shield, BookOpen, RotateCcw, Truck } from "lucide-react";
+import { ShoppingCart, Shield, BookOpen, Gem, Truck } from "lucide-react";
 import { Button } from "../ui/button";
+import { useBuyModal } from "@/components/shared/BuyModalContext";
 
 /* ── Floating gold particles (canvas) ──────────────────────────────────── */
 function Particles() {
@@ -66,7 +67,7 @@ function Particles() {
 /* ── Amazon Logo ────────────────────────────────────────────────────── */
 function AmazonLogo() {
     return (
-        <div className="relative h-6 w-20 sm:h-7 sm:w-24">
+        <div className="relative h-6 w-20 sm:h-7 sm:w-24 mt-2">
             <Image
                 src="/images/logo-white-amazon.png"
                 alt="Amazon"
@@ -85,6 +86,20 @@ function AmazonLogo() {
     );
 }
 
+function FlipkartLogo() {
+    return (
+        <div className="relative h-12 w-10 sm:h-12 sm:w-16">
+            <Image
+                src="/images/flipkart1.png"
+                alt="Flipkart"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+        </div>
+    );
+}
+
 /* ── Trust badge ────────────────────────────────────────────────────────── */
 function TrustBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
     return (
@@ -92,7 +107,7 @@ function TrustBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
             <span className="flex items-center justify-center w-9 h-9 text-[var(--brand-gold-bright)]">
                 {icon}
             </span>
-            <span className="text-[1rem] font-medium tracking-wide text-muted-foreground text-center leading-tight">
+            <span className="text-[0.9rem] font-medium tracking-wide text-muted-foreground text-center leading-tight">
                 {label}
             </span>
         </div>
@@ -133,6 +148,7 @@ function ChartDecor() {
    HERO SECTION
    ═══════════════════════════════════════════════════════════════════════════ */
 export default function HeroSection() {
+    const { open } = useBuyModal();
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden px-6 py-0 md:py-0 bg-background">
             {/* Ambient glow orbs */}
@@ -186,24 +202,27 @@ export default function HeroSection() {
                         <Button
                             variant="brand"
                             size={"xl"}
+                            onClick={open}
                         >
                             <ShoppingCart className="size-6" />
                             <span>Buy Now</span>
                         </Button>
 
-                        {/* Amazon */}
-                        <div className="flex items-center gap-4">
+                        {/* Available on */}
+                        <div className="flex items-center gap-2">
                             <span className="text-[0.95rem] italic text-muted-foreground tracking-wide">Available on</span>
+                            <FlipkartLogo />
                             <AmazonLogo />
                         </div>
+
                     </div>
 
                     {/* Trust badges */}
                     <div className="flex gap-5 flex-wrap pt-6 justify-center sm:pb-10 lg:pb-0 pb-10">
-                        <TrustBadge icon={<Truck size={48} />} label="Pan India Delivery" />
-                        <TrustBadge icon={<Shield size={48} />} label="Secure Payment" />
-                        <TrustBadge icon={<BookOpen size={48} />} label="Premium Quality" />
-                        <TrustBadge icon={<RotateCcw size={48} />} label="Easy Returns" />
+                        <TrustBadge icon={<Truck size={44} />} label="Global Delivery" />
+                        <TrustBadge icon={<Shield size={44} />} label="Secure Payment" />
+                        <TrustBadge icon={<BookOpen size={44} />} label="Premium Quality" />
+                        <TrustBadge icon={<Gem size={44} />} label="Value for Money" />
                     </div>
                 </div>
 
