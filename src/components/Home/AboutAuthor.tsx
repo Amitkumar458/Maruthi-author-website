@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Quote, Award, Globe, GraduationCap, Star } from "lucide-react";
+import { ArrowRight, Quote, Award, Globe, GraduationCap, Star, BadgeCheck } from "lucide-react";
 import { Button } from "../ui/button";
 
 /* ── Credential badge ───────────────────────────────────────────────────── */
@@ -63,7 +63,7 @@ function Stat({ value, label, index, isVisible }: StatProps) {
       }}
     >
       <span
-        className="text-2xl font-black leading-none"
+        className="text-xl font-black leading-none"
         style={{
           background: "var(--gradient-brand)",
           WebkitBackgroundClip: "text",
@@ -81,12 +81,14 @@ function Stat({ value, label, index, isVisible }: StatProps) {
 }
 
 const credentials = [
-  { icon: <GraduationCap size={24} strokeWidth={1.8} />, text: "Principal — Hyderabad Public School, Begumpet" },
+  { icon: <GraduationCap size={24} strokeWidth={1.8} />, text: "Experienced Educator" },
   { icon: <Star size={24} strokeWidth={1.8} />, text: "Positive Parenting Coach" },
+  { icon: <Award size={24} strokeWidth={1.8} />, text: "Certified Life skills and Value Education Trainer" },
+  { icon: <BadgeCheck size={24} strokeWidth={1.8} />, text: "Accredited Teacher Trainer" }
 ];
 
 const stats = [
-  { value: "Certified Positive Parenting Coach", label: "" }
+  { value: "36 Years of Experience in Education", label: "" }
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -309,9 +311,6 @@ export default function AboutAuthorSection() {
                   <ArrowRight size={18} strokeWidth={2.5} />
                 </Button>
               </Link>
-              <span className="text-md italic" style={{ color: "var(--muted-foreground)" }}>
-                Dedicated to every parent &amp; teacher
-              </span>
             </div>
           </div>
         </div>

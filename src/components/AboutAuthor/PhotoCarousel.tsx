@@ -145,7 +145,7 @@ export default function PhotoCarousel() {
 
     return (
         <section
-            className="relative w-full overflow-hidden py-12 md:py-16"
+            className="relative w-full overflow-hidden py-12 md:py-8"
             aria-label="Author photo gallery"
         >
             <style>{KF}</style>
@@ -202,11 +202,11 @@ export default function PhotoCarousel() {
 
                 {/* ── Carousel frame ── */}
                 <div
-                    className="relative w-full rounded-2xl overflow-hidden"
+                    className="relative w-full rounded-lg overflow-hidden"
                     style={{
                         border: "1px solid color-mix(in oklch, var(--brand-gold) 20%, var(--border))",
                         boxShadow:
-                            "0 8px 48px color-mix(in oklch, var(--brand-ember) 14%, transparent), 0 2px 12px rgba(0,0,0,0.35)",
+                            "0 4px 8px color-mix(in oklch, var(--brand-ember) 2%, transparent), 0 4px 8px rgba(0,0,0,0.20)",
                         background: "var(--card)",
                     }}
                 >
