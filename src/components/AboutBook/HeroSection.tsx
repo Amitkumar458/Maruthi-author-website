@@ -107,7 +107,7 @@ export default function AboutBookHeroSection() {
 
                 {/* ══ LEFT TEXT ══ */}
                 <div
-                    className="flex-1 min-w-[300px] max-w-[580px]"
+                    className="flex-1 min-w-[300px] max-w-[580px] flex flex-col items-center lg:items-start text-center lg:text-left"
                     style={{ animation: mounted ? "ab-fadeUp .7s .1s both" : "none" }}
                 >
                     {/* Live badge */}
@@ -126,30 +126,27 @@ export default function AboutBookHeroSection() {
                         </span>
                     </div>
 
-                    <h1 style={{
-                        fontSize: "clamp(32px,5.5vw,58px)", fontWeight: 900,
-                        lineHeight: 1.1, letterSpacing: "-1.5px", marginBottom: 22,
-                    }}>
+                    <h1 className="text-[clamp(32px,5.5vw,58px)] font-black leading-[1.1] tracking-[-1.5px] mb-[22px]">
                         The book that<br />
                         <ShineText>unlocks your child&apos;s</ShineText><br />
                         <span className="text-foreground">inner genius</span>
                     </h1>
 
-                    <p className="text-muted-foreground mb-6" style={{ fontSize: 20, lineHeight: 1.78, maxWidth: 500 }}>
+                    <p className="text-muted-foreground mb-6 mx-auto lg:mx-0" style={{ fontSize: 20, lineHeight: 1.78, maxWidth: 500 }}>
                         A research-backed, heart-first guide for{" "}
                         <strong className="text-foreground">Gen Z parents and teachers</strong>{" "}
                         who want to raise children that are brilliant, kind, and genuinely happy — not just high-achieving.
                     </p>
 
                     {/* Pills */}
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    <div className="flex flex-wrap gap-2 mb-8 justify-center lg:justify-start">
                         <Pill color="purple">Positive Parenting</Pill>
                         <Pill color="pink">Emotional Intelligence</Pill>
                         <Pill color="gold">Gifted Education</Pill>
                     </div>
 
                     {/* CTAs */}
-                    <div className="flex flex-wrap gap-4 mb-6">
+                    <div className="flex flex-wrap gap-4 mb-6 justify-center lg:justify-start">
                         <Button
                             variant="brand"
                             size="lg"

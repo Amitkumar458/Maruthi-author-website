@@ -86,9 +86,7 @@ const credentials = [
 ];
 
 const stats = [
-  { value: "36+", label: "Years in Education" },
-  { value: "Top 100", label: "Global Edu Leaders" },
-  { value: "All India", label: "ASISC President" },
+  { value: "Certified Positive Parenting Coach", label: "" }
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -196,7 +194,7 @@ export default function AboutAuthorSection() {
             </div>
 
             {/* Stat chips row */}
-            <div className="flex gap-3 flex-wrap justify-center lg:justify-start">
+            <div className="flex gap-3 flex-wrap justify-center w-[550px]">
               {stats.map((s, i) => (
                 <Stat key={s.label} value={s.value} label={s.label} index={i} isVisible={isVisible} />
               ))}

@@ -4,13 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Sun, Moon, ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
+import { useBuyModal } from "./BuyModalContext";
 
 const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About The book", href: "/how-to-raise-a-genius-child" },
     { label: "Know Your Author", href: "/about-the-author" },
     { label: "Reviews", href: "/reviews" },
-    { label: "Get Your Copy", href: "/get-your-copy" },
     { label: "Contact", href: "/contact" },
 ];
 
@@ -49,6 +50,7 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [hidden, setHidden] = useState(false);
     const lastScrollY = useRef(0);
+    const { open } = useBuyModal();
 
     useEffect(() => {
         const onResize = () => {
@@ -187,14 +189,15 @@ export default function Navbar() {
                                 {isDark ? <Sun size={16} strokeWidth={2} /> : <Moon size={16} strokeWidth={2} />}
                             </button>
 
-                            <Link
-                                href="/buy"
+                            <Button
                                 id="buy-now-btn"
-                                className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-lg font-bold rounded-md text-black shadow-gold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-                                style={{ backgroundImage: "linear-gradient(135deg, #FBAD38, #EE6627)" }}
+                                variant={"brand"}
+                                size={"xl"}
+                                className="hidden md:inline-flex items-center gap-2"
+                                onClick={() => open()}
                             >
                                 Buy Now <ArrowRight size={15} strokeWidth={2.5} />
-                            </Link>
+                            </Button>
 
                             <button
                                 id="mobile-menu-toggle"
@@ -332,15 +335,18 @@ export default function Navbar() {
                         )}
                     </button>
 
-                    <Link
-                        href="/buy"
+                    <Button
+                        onClick={() => {
+                            open();
+                            setMobileOpen(false);
+                        }}
+                        size={"lg"}
                         id="mobile-buy-now-btn"
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-bold rounded-full text-[#1A0A0C] active:scale-[0.98] transition-all duration-200"
+                        className="flex items-center justify-center gap-2 text-sm font-bold rounded-full text-[#1A0A0C] active:scale-[0.98] transition-all duration-200"
                         style={{ backgroundImage: "linear-gradient(135deg, #FBAD38, #EE6627)" }}
                     >
                         Buy now
-                    </Link>
+                    </Button>
                 </div>
             </aside>
         </>
