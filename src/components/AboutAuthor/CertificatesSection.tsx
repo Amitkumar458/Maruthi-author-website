@@ -20,6 +20,21 @@ const CERTIFICATES = [
         alt: "Accreditation Certificate — Maruthi Ram Prasad Pelluri",
         title: "Accreditation",
     },
+    {
+        src: "/images/certificate4.png",
+        alt: "Top 100 Global Educational Leaders — Maruthi Ram Prasad Pelluri",
+        title: "Top 100 Global Educational Leaders",
+    },
+    {
+        src: "/images/certificate5.png",
+        alt: "International Educational Ambassador — Maruthi Ram Prasad Pelluri",
+        title: "International Educational Ambassador",
+    },
+    {
+        src: "/images/certificate6.png",
+        alt: "Accredited Teacher Trainer — Maruthi Ram Prasad Pelluri",
+        title: "Accredited Teacher Trainer",
+    }
 ];
 
 /* ── Certificate card ──────────────────────────────────────────────────── */

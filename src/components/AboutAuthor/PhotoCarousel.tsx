@@ -11,6 +11,9 @@ const SLIDES = [
     { src: "/images/author-image4.png", alt: "Maruthi Ram Prasad Pelluri — candid" },
     { src: "/images/author-image5.png", alt: "Maruthi Ram Prasad Pelluri — event" },
     { src: "/images/author-image6.png", alt: "Maruthi Ram Prasad Pelluri — school" },
+    { src: "/images/author-image7.png", alt: "Maruthi Ram Prasad Pelluri — school" },
+    { src: "/images/author-image8.png", alt: "Maruthi Ram Prasad Pelluri — school" },
+    { src: "/images/author-image9.png", alt: "Maruthi Ram Prasad Pelluri — school" },
 ];
 
 const AUTO_INTERVAL = 4000; // ms
