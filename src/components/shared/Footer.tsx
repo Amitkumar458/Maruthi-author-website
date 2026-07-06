@@ -78,7 +78,7 @@ export default function FooterSection() {
                     }}
                 />
 
-                <div className="relative z-10 mx-auto max-w-[1100px] px-4 sm:px-6 pt-4 pb-14">
+                <div className="relative z-1 mx-auto max-w-[1100px] px-4 sm:px-6 pt-4 pb-14">
 
                     {/* ── Newsletter card ───────────────────────────────────────── */}
                     <div className="glass rounded-2xl p-7 sm:p-10 shadow-sm" style={{ border: "1px solid color-mix(in oklch, var(--brand-gold-bright) 25%, transparent)" }}>

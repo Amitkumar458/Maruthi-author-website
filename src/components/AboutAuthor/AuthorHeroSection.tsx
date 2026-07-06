@@ -84,16 +84,16 @@ export default function AuthorHeroSection() {
 
     return (
         <section
-            className="relative w-full overflow-hidden bg-background lg:min-h-[90vh]"
+            className="relative w-full overflow-hidden bg-background lg:min-h-[75vh] my-8"
             aria-label="About the author"
         >
 
             {/* ══ Full-screen grid ══ */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[90vh]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[75vh]">
 
                 {/* ═══ LEFT — Full-bleed image ═══ */}
                 <div
-                    className="relative min-h-[100vw] sm:min-h-[80vw] lg:min-h-[90vh] order-1"
+                    className="relative min-h-[85vw] sm:min-h-[65vw] lg:min-h-[80vh] order-1"
                 >
                     <Image
                         src="/images/author-heading.png"
@@ -101,7 +101,7 @@ export default function AuthorHeroSection() {
                         fill
                         priority
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover object-top lg:object-center select-none"
+                        className="object-contain object-bottom select-none"
                         draggable={false}
                     />
 
@@ -126,9 +126,9 @@ export default function AuthorHeroSection() {
                     {/* Bottom fade for mobile */}
                     <div
                         aria-hidden="true"
-                        className="absolute bottom-0 inset-x-0 h-10 pointer-events-none lg:hidden"
+                        className="absolute bottom-0 inset-x-0 h-5 pointer-events-none"
                         style={{
-                            background: "linear-gradient(to top, var(--background) 10%, transparent)",
+                            background: "linear-gradient(to top, var(--background) 2%, transparent)",
                         }}
                     />
 

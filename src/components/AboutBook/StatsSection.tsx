@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 const STATS = [
     { ico: "🎓", target: 30, suffix: "+", cap: "Years of Teaching Experience" },
     { ico: "📚", target: 13, suffix: "", cap: "Comprehensive Chapters" },
-    { ico: "🌍", target: 3, suffix: "", cap: "Countries with Programmes" },
+    { ico: "🌍", target: 7, suffix: "", cap: "Graphic Elements for Better Understanding" },
     { ico: "🔬", target: 100, suffix: "%", cap: "Research-Backed Strategies" },
 ];
 
