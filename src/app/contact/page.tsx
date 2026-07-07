@@ -49,7 +49,7 @@ const INFO_ITEMS = [
     {
         icon: Mail,
         title: "Media & press",
-        desc: "Interviews, features, and collaboration requests — we respond within 48 hours.",
+        desc: "Interviews, features, and collaboration requests.",
     },
 ];
 

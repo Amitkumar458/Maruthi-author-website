@@ -55,9 +55,9 @@ export default function StatsSection() {
                             borderColor: "color-mix(in oklch,var(--brand-gold) 20%,transparent)",
                         }}
                     >
-                        <div className="text-4xl mb-3">{s.ico}</div>
+                        <div className="text-3xl mb-3">{s.ico}</div>
                         <div
-                            className="text-4xl font-black mb-2 leading-none"
+                            className="text-3xl font-black mb-2 leading-none"
                             style={{ color: "var(--brand-gold)" }}
                             data-target={s.target}
                             data-suffix={s.suffix}
@@ -65,7 +65,7 @@ export default function StatsSection() {
                             0{s.suffix}
                         </div>
                         <div
-                            className="text-lg tracking-wide"
+                            className="text-md tracking-wide"
                             style={{ color: "var(--muted-foreground)" }}
                         >
                             {s.cap}

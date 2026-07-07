@@ -58,7 +58,7 @@ const OPTIONS = [
         color: "#00A8E1",
         bg: "rgba(0,168,225,0.10)",
         border: "rgba(0,168,225,0.28)",
-        href: "kindle://book?action=open&asin=B0H339XT7H",
+        href: "https://read.amazon.com/kp/kshare?asin=B0H1F7LTV6",
     },
     {
         id: "sample",
