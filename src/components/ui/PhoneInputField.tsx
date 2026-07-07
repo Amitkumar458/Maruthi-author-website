@@ -163,8 +163,9 @@ export const PhoneInputField = ({
             zIndex: 9999,
           }}
           className={cn(
-            "rounded-xl border border-gray-200 bg-white",
-            "shadow-xl shadow-indigo-100/50 ring-1 ring-black/5",
+            // popover token: dark = #270E12, light = near-white card
+            "rounded-xl border border-border bg-popover text-popover-foreground",
+            "shadow-xl ring-1 ring-border/60",
             "animate-in fade-in-0 slide-in-from-top-1 duration-150"
           )}
         >
@@ -177,13 +178,13 @@ export const PhoneInputField = ({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search country or code…"
-              className="flex-1 bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
+              className="flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
             />
             {search && (
               <button
                 type="button"
                 onClick={() => setSearch("")}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Clear search"
               >
                 <X className="size-3.5" />
@@ -195,16 +196,16 @@ export const PhoneInputField = ({
           <ul
             className={cn(
               "max-h-56 overflow-y-auto py-1.5 space-y-0.5 px-1.5",
-              "[scrollbar-width:thin] [scrollbar-color:rgba(129,140,248,0.5)_transparent]",
+              "[scrollbar-width:thin] [scrollbar-color:var(--color-primary)_transparent]",
               "[&::-webkit-scrollbar]:w-1.5",
               "[&::-webkit-scrollbar-track]:bg-transparent",
               "[&::-webkit-scrollbar-thumb]:rounded-full",
-              "[&::-webkit-scrollbar-thumb]:bg-indigo-300/60",
-              "[&::-webkit-scrollbar-thumb:hover]:bg-indigo-400/80"
+              "[&::-webkit-scrollbar-thumb]:bg-primary/30",
+              "[&::-webkit-scrollbar-thumb:hover]:bg-primary/50"
             )}
           >
             {filtered.length === 0 ? (
-              <li className="px-3 py-3 text-md text-gray-400 text-center">
+              <li className="px-3 py-3 text-md text-muted-foreground text-center">
                 No country found
               </li>
             ) : (
@@ -223,10 +224,10 @@ export const PhoneInputField = ({
                       }}
                       className={cn(
                         "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors duration-100",
-                        "hover:bg-indigo-50 hover:text-indigo-700",
+                        "hover:bg-muted hover:text-foreground",
                         isActive
-                          ? "bg-indigo-50 text-indigo-700 font-semibold"
-                          : "text-gray-700"
+                          ? "bg-primary/10 text-primary font-semibold"
+                          : "text-foreground"
                       )}
                     >
                       <span className="text-lg leading-none select-none">
@@ -238,13 +239,13 @@ export const PhoneInputField = ({
                       <span
                         className={cn(
                           "shrink-0 tabular-nums text-xs",
-                          isActive ? "text-indigo-500" : "text-gray-400"
+                          isActive ? "text-primary" : "text-muted-foreground"
                         )}
                       >
                         {country.dialCode}
                       </span>
                       {isActive && (
-                        <span className="size-1.5 shrink-0 rounded-full bg-indigo-500" />
+                        <span className="size-1.5 shrink-0 rounded-full bg-primary" />
                       )}
                     </button>
                   </li>
@@ -263,11 +264,11 @@ export const PhoneInputField = ({
       {label && (
         <label
           htmlFor={`${name}-input`}
-          className="text-sm font-semibold text-gray-700"
+          className="text-sm font-semibold text-foreground"
         >
           {label}
           {props.required && (
-            <span className="ml-0.5 text-red-500">*</span>
+            <span className="ml-0.5 text-destructive">*</span>
           )}
         </label>
       )}
@@ -276,11 +277,11 @@ export const PhoneInputField = ({
       <div ref={wrapperRef} className="relative">
         <div
           className={cn(
-            "flex items-center w-full rounded-lg border bg-white transition-all duration-150",
-            "border-gray-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20",
+            "flex items-center w-full rounded-lg border bg-background transition-all duration-150",
+            "border-input focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/30",
             hasError &&
-            "border-red-500 focus-within:border-red-500 focus-within:ring-red-500/20",
-            props.disabled && "cursor-not-allowed bg-gray-50 opacity-60"
+            "border-destructive focus-within:border-destructive focus-within:ring-destructive/30",
+            props.disabled && "cursor-not-allowed bg-muted opacity-60"
           )}
         >
           {/* Country selector button */}
@@ -295,23 +296,23 @@ export const PhoneInputField = ({
             aria-label={`Select country code, currently ${selected.name} (${selected.dialCode})`}
             className={cn(
               "flex shrink-0 items-center gap-1.5 self-stretch",
-              "border-r border-gray-200 pl-3 pr-2.5",
-              "rounded-l-lg text-sm font-medium text-gray-700",
-              "transition-colors duration-150 hover:bg-indigo-50",
-              "focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-indigo-500/40",
-              open && "bg-indigo-50",
+              "border-r border-input pl-3 pr-2.5",
+              "rounded-l-lg text-sm font-medium text-foreground",
+              "transition-colors duration-150 hover:bg-muted",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40",
+              open && "bg-muted",
               props.disabled && "pointer-events-none"
             )}
           >
             <span className="text-xl leading-none select-none pr-1">
               {selected.flag}
             </span>
-            <span className="text-sm pt-1/2 tabular-nums text-gray-500 font-semibold">
+            <span className="text-sm pt-1/2 tabular-nums text-muted-foreground font-semibold">
               {selected.dialCode}
             </span>
             <ChevronDown
               className={cn(
-                "size-3.5 text-gray-400 transition-transform duration-200",
+                "size-3.5 text-muted-foreground transition-transform duration-200",
                 open && "rotate-180"
               )}
             />
@@ -330,8 +331,8 @@ export const PhoneInputField = ({
             }}
             onBlur={() => setFieldTouched(name, true)}
             className={cn(
-              "flex-1 min-w-0 rounded-r-lg bg-transparent px-3 py-2 text-sm text-gray-900",
-              "outline-none placeholder:text-gray-400",
+              "flex-1 min-w-0 rounded-r-lg bg-transparent px-3 py-3 text-md text-foreground",
+              "outline-none placeholder:text-muted-foreground",
               "[appearance:textfield]",
               "[&::-webkit-outer-spin-button]:appearance-none",
               "[&::-webkit-inner-spin-button]:appearance-none",
@@ -347,9 +348,9 @@ export const PhoneInputField = ({
 
       {/* Error / helper text */}
       {hasError ? (
-        <p className="text-xs text-red-500">{meta.error}</p>
+        <p className="text-xs text-destructive">{meta.error}</p>
       ) : helperText ? (
-        <p className="text-xs text-gray-400">{helperText}</p>
+        <p className="text-xs text-muted-foreground">{helperText}</p>
       ) : null}
     </div>
   );
