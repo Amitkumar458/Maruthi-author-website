@@ -1,9 +1,28 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, ArrowRight, FileText } from "lucide-react";
 import Image from "next/image";
 import { useBuyModal } from "./BuyModalContext";
+import { getAmazonUrl } from "@/constents/amazonDomains";
+
+// ── Amazon ASIN ────────────────────────────────────────────────────────────
+const AMAZON_ASIN = "B0H339XT7H";
+
+/** Fetches the visitor's country code once per session (cached in sessionStorage) */
+async function fetchCountryCode(): Promise<string | null> {
+    const cached = sessionStorage.getItem("geo_country");
+    if (cached) return cached;
+    try {
+        const res = await fetch("https://ipapi.co/json/", { signal: AbortSignal.timeout(4000) });
+        const data = await res.json();
+        const code: string = data.country_code ?? "US";
+        sessionStorage.setItem("geo_country", code);
+        return code;
+    } catch {
+        return null;
+    }
+}
 
 const KEYFRAMES = `
 @keyframes bm-fadeIn  { from{opacity:0}              to{opacity:1} }
@@ -19,7 +38,7 @@ const OPTIONS = [
         color: "#FF9900",
         bg: "rgba(255,153,0,0.10)",
         border: "rgba(255,153,0,0.28)",
-        href: "https://www.amazon.in/How-Raise-Genius-Child-Unlocking/dp/939245427X",
+        href: "amazon-geo", // resolved dynamically
     },
     {
         id: "flipkart",
@@ -29,17 +48,17 @@ const OPTIONS = [
         color: "#2874f0",
         bg: "rgba(40,116,240,0.10)",
         border: "rgba(40,116,240,0.28)",
-        href: "https://www.flipkart.com",
+        href: "https://dl.flipkart.com/dl/raise-genius-child-global-game-changer-parenting-family-dynamics-comprehensive-guide-parents-develop-remarkable-potential/p/itmc49ec33fff39e?pid=9798892226219&lid=LSTBOK9798892226219VQJIFK&marketplace=FLIPKART&q=how+to+raise+a+genius+child&store=bks&srno=s_1_1&otracker=search&otracker1=search&fm=organic&iid=a9d1eded-8e67-428f-ba3b-f3a23f0196b3.9798892226219.SEARCH&ppt=None&ppn=None&ssid=tqbtvygtsw0000001783418110911&qH=fa716001be765eeb&ov_redirect=true&ov_redirect=true&_refId=&_appId=CL",
     },
     {
         id: "kindle",
         logo: "/images/kindle-round1.png",
         label: "Read on Kindle",
-        sub: "Instant digital access",
+        sub: "Opens in Kindle app",
         color: "#00A8E1",
         bg: "rgba(0,168,225,0.10)",
         border: "rgba(0,168,225,0.28)",
-        href: "https://www.amazon.in/How-Raise-Genius-Child-Unlocking-ebook/dp/B0XXXXXXXX",
+        href: "kindle://book?action=open&asin=B0H339XT7H",
     },
     {
         id: "sample",
@@ -55,6 +74,15 @@ const OPTIONS = [
 
 export default function BuyModal() {
     const { isOpen, close } = useBuyModal();
+    const [amazonUrl, setAmazonUrl] = useState<string>("https://www.amazon.com/dp/" + AMAZON_ASIN);
+    const prefetchedRef = useRef(false);
+
+    /* Prefetch geo on first open */
+    useEffect(() => {
+        if (!isOpen || prefetchedRef.current) return;
+        prefetchedRef.current = true;
+        fetchCountryCode().then((code) => setAmazonUrl(getAmazonUrl(AMAZON_ASIN, code)));
+    }, [isOpen]);
 
     /* Close on Escape key */
     useEffect(() => {
@@ -134,50 +162,55 @@ export default function BuyModal() {
 
                     {/* Options */}
                     <div className="px-6 pb-7 flex flex-col gap-3">
-                        {OPTIONS.map((opt) => (
-                            <a
-                                key={opt.id}
-                                href={opt.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-4 rounded-2xl border p-3.5 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg group"
-                                style={{
-                                    background: opt.bg,
-                                    borderColor: opt.border,
-                                }}
-                            >
-                                {/* Logo bubble */}
-                                <div
-                                    className="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0 transition-transform duration-200 group-hover:scale-110 overflow-hidden bg-white"
-                                    style={{ border: `1.5px solid ${opt.border}` }}
+                        {OPTIONS.map((opt) => {
+                            const isAmazon = opt.id === "amazon";
+                            const href = isAmazon ? amazonUrl : opt.href;
+
+                            return (
+                                <a
+                                    key={opt.id}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 rounded-2xl border p-3.5 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg group"
+                                    style={{
+                                        background: opt.bg,
+                                        borderColor: opt.border,
+                                    }}
                                 >
-                                    {opt.logo ? (
-                                        <Image
-                                            src={opt.logo}
-                                            alt={opt.label}
-                                            width={44}
-                                            height={44}
-                                            className="object-contain w-full h-full"
-                                        />
-                                    ) : (
-                                        <FileText size={24} style={{ color: opt.color }} />
-                                    )}
-                                </div>
+                                    {/* Logo bubble */}
+                                    <div
+                                        className="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0 transition-transform duration-200 group-hover:scale-110 overflow-hidden bg-white"
+                                        style={{ border: `1.5px solid ${opt.border}` }}
+                                    >
+                                        {opt.logo ? (
+                                            <Image
+                                                src={opt.logo}
+                                                alt={opt.label}
+                                                width={44}
+                                                height={44}
+                                                className="object-contain w-full h-full"
+                                            />
+                                        ) : (
+                                            <FileText size={24} style={{ color: opt.color }} />
+                                        )}
+                                    </div>
 
-                                {/* Text */}
-                                <div className="flex-1 min-w-0">
-                                    <div className="font-bold text-sm text-foreground leading-tight">{opt.label}</div>
-                                    <div className="text-xs mt-0.5 text-muted-foreground">{opt.sub}</div>
-                                </div>
+                                    {/* Text */}
+                                    <div className="flex-1 min-w-0">
+                                        <div className="font-bold text-sm text-foreground leading-tight">{opt.label}</div>
+                                        <div className="text-xs mt-0.5 text-muted-foreground">{opt.sub}</div>
+                                    </div>
 
-                                {/* Arrow */}
-                                <ArrowRight
-                                    size={16}
-                                    className="flex-shrink-0 group-hover:translate-x-1 transition-transform duration-200"
-                                    style={{ color: opt.color }}
-                                />
-                            </a>
-                        ))}
+                                    {/* Arrow */}
+                                    <ArrowRight
+                                        size={16}
+                                        className="flex-shrink-0 group-hover:translate-x-1 transition-transform duration-200"
+                                        style={{ color: opt.color }}
+                                    />
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

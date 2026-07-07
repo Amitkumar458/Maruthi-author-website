@@ -22,8 +22,8 @@ const validationSchema = Yup.object({
         .min(6, "Enter a valid phone number")
         .required("Phone number is required"),
     message: Yup.string()
-        .min(10, "Please write at least 10 characters")
-        .max(1000, "Message is too long (max 1000 characters)")
+        .min(5, "Please write at least 5 characters")
+        .max(100, "Message is too long (max 100 characters)")
         .required("Tell us what's on your mind"),
 });
 
@@ -130,7 +130,7 @@ function MessageTextarea() {
                     <span />
                 )}
                 <p className="text-xs text-muted-foreground ml-auto">
-                    {field.value?.length ?? 0} / 1000
+                    {field.value?.length ?? 0} / 100
                 </p>
             </div>
         </div>
@@ -261,26 +261,6 @@ export default function ContactSection() {
                                 </div>
                             </div>
                         ))}
-
-                        {/* Gold divider */}
-                        <div
-                            className="h-px w-28"
-                            style={{
-                                background:
-                                    "linear-gradient(90deg, var(--brand-gold), transparent)",
-                            }}
-                        />
-
-                        <p className="text-md text-muted-foreground leading-relaxed max-w-md md:max-w-xs text-center md:text-left">
-                            We typically respond within{" "}
-                            <span
-                                style={{ color: "var(--brand-gold-bright)" }}
-                                className="font-medium"
-                            >
-                                1–2 business days.
-                            </span>{" "}
-                            For urgent matters, reach out directly via social media.
-                        </p>
                     </div>
 
                     {/* ══ RIGHT: form card ══ */}
@@ -418,7 +398,7 @@ export default function ContactSection() {
                                                 )}
                                             </Button>
 
-                                            <p className="text-center text-xs text-muted-foreground">
+                                            <p className="text-center text-sm text-muted-foreground">
                                                 Your information is private and never shared.
                                             </p>
                                         </Form>

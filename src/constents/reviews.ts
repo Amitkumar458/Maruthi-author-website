@@ -13,8 +13,8 @@ export interface ReviewData {
 export const reviewsData: ReviewData[] = [
   {
     id: 1,
-    name: "Priya Mehta",
-    role: "Mother of two · Bengaluru",
+    name: "Vaishnavi",
+    role: "Canada",
     initials: "PM",
     rating: 5,
     tag: "parents",
@@ -25,8 +25,8 @@ export const reviewsData: ReviewData[] = [
   },
   {
     id: 2,
-    name: "Rahul Sharma",
-    role: "Class 5 Teacher · Hyderabad",
+    name: "V.V.Ramana",
+    role: "Kuwait",
     initials: "RS",
     rating: 5,
     tag: "teachers",
@@ -37,8 +37,8 @@ export const reviewsData: ReviewData[] = [
   },
   {
     id: 3,
-    name: "Ananya Reddy",
-    role: "Parent of a gifted 5-year-old · Chennai",
+    name: "Arjun",
+    role: "USA",
     initials: "AR",
     rating: 5,
     tag: "parents",
@@ -61,8 +61,8 @@ export const reviewsData: ReviewData[] = [
   },
   {
     id: 5,
-    name: "Vikram Nair",
-    role: "Father · Kochi",
+    name: "Bharat",
+    role: "Hyderabad - India",
     initials: "VN",
     rating: 5,
     tag: "parents",
@@ -72,8 +72,8 @@ export const reviewsData: ReviewData[] = [
   },
   {
     id: 6,
-    name: "Dr. Sunita Pillai",
-    role: "Child Psychologist & Educator · New Delhi",
+    name: "Imran",
+    role: "UK",
     initials: "SP",
     rating: 5,
     tag: "teachers",

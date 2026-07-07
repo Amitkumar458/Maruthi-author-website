@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-const HIGHLIGHTS: Record<"parents" | "teachers", { ico: string; title: string; desc: string }[]> = {
+const HIGHLIGHTS: Record<"parents" | "educators", { ico: string; title: string; desc: string }[]> = {
     parents: [
         { ico: "🔍", title: "Spot the signs early", desc: "Know what exceptional curiosity, focus and empathy look like before age 5." },
         { ico: "🌱", title: "Nurture the whole child", desc: "Academic + emotional + social — all three treated as equally essential." },
         { ico: "💬", title: "Have better conversations", desc: "Scripts, questions and real-life strategies for connecting with a gifted child." },
         { ico: "🛡️", title: "Protect their joy", desc: "Balance support and limits so education complements childhood, not overshadows it." },
     ],
-    teachers: [
+    educators: [
         { ico: "🎯", title: "Identify without labels", desc: "Gifted children aren't always straight-A students. Spot them in every corner." },
         { ico: "⚡", title: "Differentiate instantly", desc: 'Curriculum compacting, tiered tasks, and "Most Difficult First" — use tomorrow.' },
         { ico: "🤝", title: "Partner with parents", desc: "Turn intense parent advocates into your most powerful classroom resource." },
@@ -19,7 +19,7 @@ const HIGHLIGHTS: Record<"parents" | "teachers", { ico: string; title: string; d
 };
 
 export default function ForSection() {
-    const [tab, setTab] = useState<"parents" | "teachers">("parents");
+    const [tab, setTab] = useState<"parents" | "educators">("parents");
 
     return (
         <section className="pt-16 px-6 max-w-6xl mx-auto">
@@ -42,7 +42,7 @@ export default function ForSection() {
                     className="flex rounded-full p-1 border border-border"
                     style={{ background: "color-mix(in oklch,white 4%,transparent)" }}
                 >
-                    {(["parents", "teachers"] as const).map((t) => (
+                    {(["parents", "educators"] as const).map((t) => (
                         <button
                             key={t}
                             onClick={() => setTab(t)}
@@ -58,7 +58,7 @@ export default function ForSection() {
                                     : {}
                             }
                         >
-                            {t === "parents" ? "👨‍👩‍👧 Parents" : "👩‍🏫 Teachers"}
+                            {t === "parents" ? "👨‍👩‍👧 Parents" : "👩‍🏫 Educators"}
                         </button>
                     ))}
                 </div>
