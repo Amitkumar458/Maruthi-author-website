@@ -13,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { TextInputField } from "../ui/Input";
+import { getAmazonUrl } from "@/constents/amazonDomains";
 
 const SOCIAL_LINKS = [
     { icon: FaFacebook, href: "https://facebook.com", label: "Facebook" },
@@ -25,6 +26,24 @@ const FOOTER_LINKS = [
     { label: "Terms & conditions", href: "/terms" },
     { label: "Refund policy", href: "/refund-policy" },
     { label: "Contact", href: "/contact" },
+];
+
+const BOOK_ASIN = "B0H339XT7H";
+
+const AMAZON_COUNTRIES = [
+    { label: "USA", code: "US" },
+    { label: "UK", code: "GB" },
+    { label: "Germany", code: "DE" },
+    { label: "Brazil", code: "BR" },
+    { label: "Canada", code: "CA" },
+    { label: "Australia", code: "AU" },
+    { label: "France", code: "FR" },
+    { label: "Mexico", code: "MX" },
+    { label: "Spain", code: "ES" },
+    { label: "Italy", code: "IT" },
+    { label: "India", code: "IN" },
+    { label: "Japan", code: "JP" },
+    { label: "Netherlands", code: "NL" },
 ];
 
 const validationSchema = Yup.object({
@@ -42,7 +61,18 @@ export default function FooterSection() {
 
     const handleSubmit = async (values: any, { setSubmitting, resetForm }: any) => {
         try {
-            await new Promise((res) => setTimeout(res, 1200));
+            const response = await fetch("/api/newsletter", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to subscribe");
+            }
+
             setStatus("success");
             resetForm();
         } catch {
@@ -79,6 +109,73 @@ export default function FooterSection() {
                 />
 
                 <div className="relative z-1 mx-auto max-w-[1100px] px-4 sm:px-6 pt-4 pb-14">
+
+                    {/* ── Availability + Publisher ──────────────────────────────── */}
+                    <div
+                        className="rounded-2xl px-6 py-6 shadow-sm mb-8"
+                        style={{
+                            background: "color-mix(in oklch, var(--brand-gold) 1%, transparent)",
+                            border: "1px solid color-mix(in oklch, var(--brand-gold-bright) 18%, transparent)",
+                        }}
+                    >
+                        {/* Label */}
+                        <p
+                            className="mb-3 text-md font-bold uppercase tracking-[0.11em]"
+                            style={{ color: "var(--brand-gold-bright)" }}
+                        >
+                            Available on Amazon worldwide
+                        </p>
+
+                        {/* Country pills */}
+                        <div className="flex flex-wrap gap-2">
+                            {AMAZON_COUNTRIES.map(({ label, code }) => (
+                                <a
+                                    key={code}
+                                    href={getAmazonUrl(BOOK_ASIN, code)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                                    style={{
+                                        borderColor: "color-mix(in oklch, var(--brand-gold) 28%, transparent)",
+                                        background: "color-mix(in oklch, var(--brand-gold) 8%, var(--card))",
+                                        color: "var(--muted-foreground)",
+                                    }}
+                                    onMouseEnter={e => {
+                                        (e.currentTarget as HTMLElement).style.color = "var(--brand-gold-bright)";
+                                        (e.currentTarget as HTMLElement).style.borderColor = "color-mix(in oklch, var(--brand-gold) 55%, transparent)";
+                                        (e.currentTarget as HTMLElement).style.background = "color-mix(in oklch, var(--brand-gold) 15%, var(--card))";
+                                    }}
+                                    onMouseLeave={e => {
+                                        (e.currentTarget as HTMLElement).style.color = "var(--muted-foreground)";
+                                        (e.currentTarget as HTMLElement).style.borderColor = "color-mix(in oklch, var(--brand-gold) 28%, transparent)";
+                                        (e.currentTarget as HTMLElement).style.background = "color-mix(in oklch, var(--brand-gold) 8%, var(--card))";
+                                    }}
+                                >
+                                    <span
+                                        className="h-1.5 w-1.5 rounded-full flex-shrink-0 transition-colors duration-200"
+                                        style={{ background: "var(--brand-gold)" }}
+                                    />
+                                    {label}
+                                </a>
+                            ))}
+                        </div>
+
+                        {/* Publisher */}
+                        <p
+                            className="mt-4 text-md text-muted-foreground"
+                        >
+                            Published by{" "}
+                            <a
+                                href="https://whitefalconpublishing.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-semibold transition-colors duration-150 hover:underline"
+                                style={{ color: "var(--brand-gold-bright)" }}
+                            >
+                                White Falcon Publishing
+                            </a>
+                        </p>
+                    </div>
 
                     {/* ── Newsletter card ───────────────────────────────────────── */}
                     <div className="glass rounded-2xl p-7 sm:p-10 shadow-sm" style={{ border: "1px solid color-mix(in oklch, var(--brand-gold-bright) 25%, transparent)" }}>

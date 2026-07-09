@@ -120,7 +120,7 @@ export default function BuyModal() {
                 className="fixed inset-0 z-[510] flex items-center justify-center p-4 pointer-events-none"
             >
                 <div
-                    className="relative w-full max-w-md rounded-3xl border shadow-2xl overflow-hidden pointer-events-auto"
+                    className="relative w-full max-w-md rounded-xl border shadow-2xl overflow-hidden pointer-events-auto"
                     style={{
                         background: "var(--card)",
                         borderColor: "color-mix(in oklch,var(--brand-gold) 22%,transparent)",

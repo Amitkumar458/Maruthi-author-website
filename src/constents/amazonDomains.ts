@@ -295,5 +295,5 @@ export const AMAZON_DOMAIN_MAP: Record<string, string> = {
 export function getAmazonUrl(asin: string, countryCode: string | null): string {
     const domain =
         (countryCode && AMAZON_DOMAIN_MAP[countryCode]) ?? "amazon.com";
-    return `https://www.${domain}/dp/${asin}`;
+    return `https://www.${domain}/dp/${asin}?&tag=mybookstoream-21`;
 }

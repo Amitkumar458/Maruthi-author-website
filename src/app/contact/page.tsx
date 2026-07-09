@@ -144,7 +144,7 @@ export default function ContactSection() {
     const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
     const handleSubmit = async (
-        _values: typeof initialValues,
+        values: typeof initialValues,
         {
             setSubmitting,
             resetForm,
@@ -154,8 +154,16 @@ export default function ContactSection() {
         }
     ) => {
         try {
-            // Replace with your real API / form service call
-            await new Promise((res) => setTimeout(res, 1400));
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(values),
+            });
+
+            if (!res.ok) {
+                throw new Error("Request failed");
+            }
+
             setStatus("success");
             resetForm();
         } catch {
