@@ -16,15 +16,12 @@ import { TextInputField } from "../ui/Input";
 import { getAmazonUrl } from "@/constents/amazonDomains";
 
 const SOCIAL_LINKS = [
-    { icon: FaFacebook, href: "https://facebook.com", label: "Facebook" },
-    { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-    { icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
+    { icon: FaFacebook, href: "", label: "Facebook" },
+    { icon: FaInstagram, href: "", label: "Instagram" },
+    { icon: FaYoutube, href: "", label: "YouTube" },
 ];
 
 const FOOTER_LINKS = [
-    { label: "Privacy policy", href: "/privacy-policy" },
-    { label: "Terms & conditions", href: "/terms" },
-    { label: "Refund policy", href: "/refund-policy" },
     { label: "Contact", href: "/contact" },
 ];
 
@@ -235,6 +232,11 @@ export default function FooterSection() {
                                                 "hover:text-[var(--brand-gold-bright)]",
                                                 "hover:[background:linear-gradient(135deg,color-mix(in_oklch,var(--brand-gold)_20%,transparent),color-mix(in_oklch,var(--brand-ember)_10%,transparent))]"
                                             )}
+                                            onClick={(e) => {
+                                                if (href === "") {
+                                                    e.preventDefault();
+                                                }
+                                            }}
                                         >
                                             <Icon size={17} />
                                         </a>
