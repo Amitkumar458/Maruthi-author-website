@@ -313,13 +313,6 @@ export default function ContactSection() {
                                             Thank you for reaching out.
                                         </p>
                                     </div>
-                                    <button
-                                        onClick={() => setStatus("idle")}
-                                        className="text-sm font-medium transition-colors duration-150 hover:opacity-80"
-                                        style={{ color: "var(--brand-gold-bright)" }}
-                                    >
-                                        Send another message →
-                                    </button>
                                 </div>
                             ) : (
                                 /* ── Form ── */
