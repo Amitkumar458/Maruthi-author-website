@@ -22,7 +22,7 @@ export default function AboutAuthor() {
         hasOccupation: { "@type": "Occupation", name: "Educational Consultant" },
         url: "https://www.mybookzz.com/about-the-author",
         sameAs: [
-
+            "https://www.linkedin.com/in/maruthipelluri",
         ]
     };
 
