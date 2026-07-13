@@ -23,7 +23,7 @@ const validationSchema = Yup.object({
         .required("Phone number is required"),
     message: Yup.string()
         .min(5, "Please write at least 5 characters")
-        .max(100, "Message is too long (max 100 characters)")
+        .max(200, "Message is too long (max 200 characters)")
         .required("Tell us what's on your mind"),
 });
 
@@ -130,7 +130,7 @@ function MessageTextarea() {
                     <span />
                 )}
                 <p className="text-xs text-muted-foreground ml-auto">
-                    {field.value?.length ?? 0} / 100
+                    {field.value?.length ?? 0} / 200
                 </p>
             </div>
         </div>

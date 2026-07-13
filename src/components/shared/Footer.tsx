@@ -16,8 +16,8 @@ import { TextInputField } from "../ui/Input";
 import { getAmazonUrl } from "@/constents/amazonDomains";
 
 const SOCIAL_LINKS = [
-    { icon: FaFacebook, href: "", label: "Facebook" },
-    { icon: FaInstagram, href: "", label: "Instagram" },
+    { icon: FaFacebook, href: "https://www.facebook.com/share/1BV91CYb5h", label: "Facebook" },
+    { icon: FaInstagram, href: "https://www.instagram.com/maruthi_ramprasad_pelluri", label: "Instagram" },
     { icon: FaYoutube, href: "", label: "YouTube" },
 ];
 
@@ -55,6 +55,7 @@ const validationSchema = Yup.object({
 
 export default function FooterSection() {
     const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+    const [unavailableLink, setUnavailableLink] = useState<string | null>(null);
 
     const handleSubmit = async (values: any, { setSubmitting, resetForm }: any) => {
         try {
@@ -225,7 +226,7 @@ export default function FooterSection() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className={cn(
-                                                "flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:scale-110",
+                                                "relative flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200 hover:scale-110",
                                                 // light / dark both use CSS tokens
                                                 "bg-muted/40 border border-border text-muted-foreground",
                                                 "hover:border-[color-mix(in_oklch,var(--brand-gold)_35%,transparent)]",
@@ -235,10 +236,17 @@ export default function FooterSection() {
                                             onClick={(e) => {
                                                 if (href === "") {
                                                     e.preventDefault();
+                                                    setUnavailableLink(label);
+                                                    setTimeout(() => setUnavailableLink(null), 2000);
                                                 }
                                             }}
                                         >
                                             <Icon size={17} />
+                                            {unavailableLink === label && (
+                                                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-[10px] text-background shadow-sm animate-in fade-in zoom-in duration-200 pointer-events-none">
+                                                    Coming soon
+                                                </span>
+                                            )}
                                         </a>
                                     ))}
                                 </div>
