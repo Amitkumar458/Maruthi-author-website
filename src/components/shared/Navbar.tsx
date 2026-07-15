@@ -12,7 +12,6 @@ const NAV_LINKS = [
     { label: "About The book", href: "/how-to-raise-a-genius-child" },
     { label: "Know Your Author", href: "/about-the-author" },
     { label: "Reviews", href: "/reviews" },
-    { label: "Contact", href: "/contact" },
 ];
 
 function useTheme() {

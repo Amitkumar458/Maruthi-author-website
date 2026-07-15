@@ -21,10 +21,6 @@ const SOCIAL_LINKS = [
     { icon: FaYoutube, href: "", label: "YouTube" },
 ];
 
-const FOOTER_LINKS = [
-    { label: "Contact", href: "/contact" },
-];
-
 const BOOK_ASIN = "B0H339XT7H";
 
 const AMAZON_COUNTRIES = [
@@ -82,7 +78,6 @@ export default function FooterSection() {
 
     return (
         <footer className="bg-background overflow-hidden" aria-label="Footer">
-
             {/* Content wrapper */}
             <div className="relative">
 
@@ -106,75 +101,7 @@ export default function FooterSection() {
                     }}
                 />
 
-                <div className="relative z-1 mx-auto max-w-[1100px] px-4 sm:px-6 pt-4 pb-14">
-
-                    {/* ── Availability + Publisher ──────────────────────────────── */}
-                    <div
-                        className="rounded-2xl px-6 py-6 shadow-sm mb-8"
-                        style={{
-                            background: "color-mix(in oklch, var(--brand-gold) 1%, transparent)",
-                            border: "1px solid color-mix(in oklch, var(--brand-gold-bright) 18%, transparent)",
-                        }}
-                    >
-                        {/* Label */}
-                        <p
-                            className="mb-3 text-md font-bold uppercase tracking-[0.11em]"
-                            style={{ color: "var(--brand-gold-bright)" }}
-                        >
-                            Available on Amazon worldwide
-                        </p>
-
-                        {/* Country pills */}
-                        <div className="flex flex-wrap gap-2">
-                            {AMAZON_COUNTRIES.map(({ label, code }) => (
-                                <a
-                                    key={code}
-                                    href={getAmazonUrl(BOOK_ASIN, code)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                                    style={{
-                                        borderColor: "color-mix(in oklch, var(--brand-gold) 28%, transparent)",
-                                        background: "color-mix(in oklch, var(--brand-gold) 8%, var(--card))",
-                                        color: "var(--muted-foreground)",
-                                    }}
-                                    onMouseEnter={e => {
-                                        (e.currentTarget as HTMLElement).style.color = "var(--brand-gold-bright)";
-                                        (e.currentTarget as HTMLElement).style.borderColor = "color-mix(in oklch, var(--brand-gold) 55%, transparent)";
-                                        (e.currentTarget as HTMLElement).style.background = "color-mix(in oklch, var(--brand-gold) 15%, var(--card))";
-                                    }}
-                                    onMouseLeave={e => {
-                                        (e.currentTarget as HTMLElement).style.color = "var(--muted-foreground)";
-                                        (e.currentTarget as HTMLElement).style.borderColor = "color-mix(in oklch, var(--brand-gold) 28%, transparent)";
-                                        (e.currentTarget as HTMLElement).style.background = "color-mix(in oklch, var(--brand-gold) 8%, var(--card))";
-                                    }}
-                                >
-                                    <span
-                                        className="h-1.5 w-1.5 rounded-full flex-shrink-0 transition-colors duration-200"
-                                        style={{ background: "var(--brand-gold)" }}
-                                    />
-                                    {label}
-                                </a>
-                            ))}
-                        </div>
-
-                        {/* Publisher */}
-                        <p
-                            className="mt-4 text-md text-muted-foreground"
-                        >
-                            Published by{" "}
-                            <a
-                                href="https://whitefalconpublishing.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="font-semibold transition-colors duration-150 hover:underline"
-                                style={{ color: "var(--brand-gold-bright)" }}
-                            >
-                                White Falcon Publishing
-                            </a>
-                        </p>
-                    </div>
-
+                <div className="relative z-1 mx-auto max-w-[1100px] px-4 sm:px-6 pt-4 pb-8">
                     {/* ── Newsletter card ───────────────────────────────────────── */}
                     <div className="glass rounded-2xl p-7 sm:p-10 shadow-sm" style={{ border: "1px solid color-mix(in oklch, var(--brand-gold-bright) 25%, transparent)" }}>
                         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16 lg:items-center">
@@ -360,31 +287,140 @@ export default function FooterSection() {
                         </div>
                     </div>
 
-                    {/* ── Footer bottom ─────────────────────────────────────────── */}
-                    <div className="mt-10 border-t border-border pt-8">
-                        <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-                            <p className="text-md text-muted-foreground">
-                                © {new Date().getFullYear()}{" "}
-                                <span className="text-foreground/70">
-                                    Mybookzz
-                                </span>
-                                . All rights reserved.
-                            </p>
+                    {/* ── Footer main grid ──────────────────────────────────────── */}
+                    <div className="mt-10 border-t pt-10 pb-4" style={{ borderColor: "color-mix(in oklch, var(--brand-gold) 18%, transparent)" }}>
+                        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 px-4">
 
-                            <nav aria-label="Footer links">
-                                <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 sm:justify-end">
-                                    {FOOTER_LINKS.map(({ label, href }) => (
+                            {/* Col 1 — Brand */}
+                            <div className="flex flex-col gap-5">
+                                <Link href="/" className="flex items-center gap-2 group w-fit" aria-label="Mybookzz - Home">
+                                    <span className="relative flex h-14 w-14 shrink-0 transition-transform duration-200 group-hover:scale-105">
+                                        <img
+                                            src="/logos.png"
+                                            alt="Mybookzz logo"
+                                            className="object-contain h-full w-full"
+                                        />
+                                    </span>
+                                    <span className="flex flex-col leading-[1.2]">
+                                        <span
+                                            className="font-bold text-xl tracking-wide"
+                                            style={{
+                                                backgroundImage: "var(--gradient-brand)",
+                                                WebkitBackgroundClip: "text",
+                                                backgroundClip: "text",
+                                                color: "transparent",
+                                            }}
+                                        >
+                                            Mybookzz
+                                        </span>
+                                        <span className="text-muted-foreground text-sm tracking-wide">
+                                            Read Today Lead Tomorrow
+                                        </span>
+                                    </span>
+                                </Link>
+
+                                <p className="text-md leading-relaxed text-muted-foreground max-w-[260px] ml-4">
+                                    Inspiring parents and children with transformative stories that unlock the genius within every child.
+                                </p>
+                            </div>
+
+                            {/* Col 2 — Quick Links */}
+                            <div className="md:ml-16 mt-1 ml-0">
+                                <p
+                                    className="mb-4 text-sm font-bold uppercase tracking-[0.11em]"
+                                    style={{ color: "var(--brand-gold-bright)" }}
+                                >
+                                    Quick links
+                                </p>
+                                <ul className="flex flex-col gap-2.5" role="list">
+                                    {[
+                                        { label: "Home", href: "/" },
+                                        { label: "About The Book", href: "/how-to-raise-a-genius-child" },
+                                        { label: "Know Your Author", href: "/about-the-author" },
+                                        { label: "Reviews", href: "/reviews" },
+                                    ].map(({ label, href }) => (
                                         <li key={href}>
                                             <Link
                                                 href={href}
-                                                className="text-md text-muted-foreground transition-colors duration-150 hover:text-[var(--brand-gold-bright)]"
+                                                className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground w-fit"
                                             >
+                                                <span
+                                                    className="h-1 w-1 rounded-full flex-shrink-0 transition-all duration-200 group-hover:w-3"
+                                                    style={{ background: "var(--brand-gold)" }}
+                                                />
                                                 {label}
                                             </Link>
                                         </li>
                                     ))}
                                 </ul>
-                            </nav>
+                            </div>
+
+                            <div className="sm:col-span-2 lg:col-span-1">
+                                <p
+                                    className="mb-4 text-sm font-bold uppercase tracking-[0.11em]"
+                                    style={{ color: "var(--brand-gold-bright)" }}
+                                >
+                                    Available on Amazon worldwide
+                                </p>
+
+                                {/* Country links — plain text style matching Quick Links, 2-col sub-grid */}
+                                <div className="grid grid-cols-3 gap-x-3 gap-y-2.5 mb-5">
+                                    {AMAZON_COUNTRIES.map(({ label, code }) => (
+                                        <a
+                                            key={code}
+                                            href={getAmazonUrl(BOOK_ASIN, code)}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground w-fit"
+                                        >
+                                            <span
+                                                className="h-1 w-1 rounded-full flex-shrink-0 transition-all duration-200 group-hover:w-3"
+                                                style={{ background: "var(--brand-gold)" }}
+                                            />
+                                            {label}
+                                        </a>
+                                    ))}
+                                </div>
+
+                                {/* Publisher */}
+                                <p className="text-sm text-muted-foreground">
+                                    Published by{" "}
+                                    <a
+                                        href="https://whitefalconpublishing.com"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="font-semibold transition-colors duration-150 hover:underline"
+                                        style={{ color: "var(--brand-gold-bright)" }}
+                                    >
+                                        White Falcon Publishing
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Bottom bar — stacked + centered on mobile, flex-row space-between on sm+ */}
+                        <div
+                            className="mt-5 pt-5 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between sm:text-left"
+                            style={{ borderTop: "1px solid color-mix(in oklch, var(--brand-gold) 12%, transparent)" }}
+                        >
+                            <p className="text-md text-muted-foreground">
+                                © {new Date().getFullYear()}{" "}
+                                <span
+                                    className="font-semibold"
+                                    style={{
+                                        backgroundImage: "var(--gradient-brand)",
+                                        WebkitBackgroundClip: "text",
+                                        backgroundClip: "text",
+                                        color: "transparent",
+                                    }}
+                                >
+                                    Mybookzz
+                                </span>
+                                . All rights reserved.
+                            </p>
+                            <p className="text-md text-muted-foreground/90">
+                                Crafted with 💖 for every curious parent.
+                            </p>
                         </div>
                     </div>
                 </div>
