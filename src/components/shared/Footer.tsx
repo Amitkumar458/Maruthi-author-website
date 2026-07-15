@@ -36,7 +36,6 @@ const AMAZON_COUNTRIES = [
     { label: "Italy", code: "IT" },
     { label: "India", code: "IN" },
     { label: "Japan", code: "JP" },
-    { label: "Netherlands", code: "NL" },
 ];
 
 const validationSchema = Yup.object({
