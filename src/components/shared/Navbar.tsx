@@ -134,7 +134,7 @@ export default function Navbar() {
                                         Mybookzz
                                     </span>
                                     <span className="text-muted-foreground text-[0.9rem] font-medium truncate tracking-wide">
-                                        Read Today Lead Tomorrow
+                                        Read Today • Lead Tomorrow
                                     </span>
                                 </span>
                             </Link>
@@ -269,7 +269,7 @@ export default function Navbar() {
                                 Mybookzz
                             </span>
                             <span className="text-muted-foreground text-[0.90rem]">
-                                Read Today Lead Tomorrow
+                                Read Today • Lead Tomorrow
                             </span>
                         </span>
                     </Link>

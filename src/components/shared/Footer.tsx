@@ -8,6 +8,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import {
     FaFacebook,
     FaInstagram,
+    FaLinkedin,
     FaYoutube,
 } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,7 @@ const SOCIAL_LINKS = [
     { icon: FaFacebook, href: "https://www.facebook.com/share/1BV91CYb5h", label: "Facebook" },
     { icon: FaInstagram, href: "https://www.instagram.com/maruthi_ramprasad_pelluri", label: "Instagram" },
     { icon: FaYoutube, href: "", label: "YouTube" },
+    { icon: FaLinkedin, href: "https://www.linkedin.com/in/maruthipelluri", label: "Linkedin" }
 ];
 
 const BOOK_ASIN = "B0H339XT7H";
@@ -253,7 +255,7 @@ export default function FooterSection() {
                                                     variant="brand"
                                                     size="lg"
                                                     disabled={isSubmitting}
-                                                    className="w-full rounded-xl tracking-wide py-6"
+                                                    className="w-full rounded-xl tracking-wide py-6 cursor-pointer"
                                                 >
                                                     {isSubmitting ? (
                                                         <>
@@ -287,7 +289,7 @@ export default function FooterSection() {
                     </div>
 
                     {/* ── Footer main grid ──────────────────────────────────────── */}
-                    <div className="mt-10 border-t pt-10 pb-4" style={{ borderColor: "color-mix(in oklch, var(--brand-gold) 18%, transparent)" }}>
+                    <div className="md:mt-10 mt-6 border-t md:pt-10 pt-6 pb-4" style={{ borderColor: "color-mix(in oklch, var(--brand-gold) 18%, transparent)" }}>
                         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 px-4">
 
                             {/* Col 1 — Brand */}
@@ -313,7 +315,7 @@ export default function FooterSection() {
                                             Mybookzz
                                         </span>
                                         <span className="text-muted-foreground text-sm tracking-wide">
-                                            Read Today Lead Tomorrow
+                                            Read Today • Lead Tomorrow
                                         </span>
                                     </span>
                                 </Link>
@@ -413,9 +415,9 @@ export default function FooterSection() {
                                         color: "transparent",
                                     }}
                                 >
-                                    Mybookzz
-                                </span>
-                                . All rights reserved.
+                                    Mybookzz.com
+                                </span>{" "}
+                                All rights reserved.
                             </p>
                             <p className="text-md text-muted-foreground/90">
                                 Crafted with 💖 for every curious parent.
