@@ -23,6 +23,8 @@ export default function AboutAuthor() {
         url: "https://www.mybookzz.com/about-the-author",
         sameAs: [
             "https://www.linkedin.com/in/maruthipelluri",
+            "https://www.instagram.com/maruthi_ramprasad_pelluri",
+            "https://www.linkedin.com/in/maruthipelluri",
         ]
     };
 
