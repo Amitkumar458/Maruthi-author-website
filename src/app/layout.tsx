@@ -37,7 +37,7 @@ export default function RootLayout({
     name: "Mybookzz",
     url: "https://www.mybookzz.com",
     logo: "https://www.mybookzz.com/logos.png",
-    sameAs: ["https://facebook.com/", "https://instagram.com/", "https://youtube.com/"]
+    sameAs: ["https://www.facebook.com/share/1BV91CYb5h", "https://www.instagram.com/maruthi_ramprasad_pelluri", "https://www.linkedin.com/in/maruthipelluri"]
   };
 
   return (

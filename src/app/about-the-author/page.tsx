@@ -24,7 +24,7 @@ export default function AboutAuthor() {
         sameAs: [
             "https://www.linkedin.com/in/maruthipelluri",
             "https://www.instagram.com/maruthi_ramprasad_pelluri",
-            "https://www.linkedin.com/in/maruthipelluri",
+            "https://www.facebook.com/share/1BV91CYb5h"
         ]
     };
 
